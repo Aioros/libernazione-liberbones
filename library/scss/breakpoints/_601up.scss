@@ -1,0 +1,24 @@
+.admin-bar .header {
+	top: 45px;
+}
+
+.admin-bar .nav {
+	top: 90px;
+}
+
+.author-meta {
+
+	.author-meta-avatar {
+	    float: left;
+	    width: 115px;
+	}
+
+	.author-description {
+	    margin-left: 140px;
+
+	    .author-name {
+	    	margin: 0 0 15px;
+	    	text-align: left;
+	    }
+	}
+}

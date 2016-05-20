@@ -1,0 +1,84 @@
+{
+    "rules":
+    [{
+        "class": "InteractiveRule",
+        "selector" : "//script[contains(@src,'ptp.stbm.it')]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "element",
+                "selector" : "script"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector" : "//p[script[contains(@src,'ptp.stbm.it')]]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "children",
+                "selector" : "p"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector" : "//p[.//div[@class='videofluido' and iframe]]",
+        "properties" : {
+            "interactive.url" : {
+                "type" : "string",
+                "selector" : "iframe",
+                "attribute": "src"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector" : "//div[@class='videofluido' and iframe]",
+        "properties" : {
+            "interactive.url" : {
+                "type" : "string",
+                "selector" : "iframe",
+                "attribute": "src"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector" : "//p[.//div[@class='videofluido' and script]]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "element",
+                "selector" : "div"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector" : "//div[@class='videofluido' and script]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "element",
+                "selector" : "div"
+            }
+        }
+    }, {
+        "class": "IgnoreRule",
+        "selector": "//div[@class='eprice-lnk']"
+    }, {
+        "class": "InteractiveRule",
+        "selector": "//p[a[img]]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "children",
+                "selector" : "p"
+            }
+        }
+    }, {
+        "class": "InteractiveRule",
+        "selector": "//a[img]",
+        "properties" : {
+            "interactive.iframe" : {
+                "type" : "element",
+                "selector" : "a"
+            }
+        }
+    }, {
+        "class": "IgnoreRule",
+        "selector": "//div[@class='eprice-lnk']"
+    }]
+}

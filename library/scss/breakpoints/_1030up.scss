@@ -1,0 +1,210 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop.
+
+******************************************************************/
+
+.single .wrap {
+  width: 66.667%;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+#container {
+	padding-top: 112px;
+}
+
+#header {
+
+	height: auto;
+	position: relative;
+
+	.admin-bar & {
+		top: 0;
+	}
+
+	#site-header {
+		background-color: $white;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 9999;
+		border-bottom: 1px solid $gray;
+		@include transform(translateY(0));
+		@include transition(transform 300ms ease-out);
+
+		.admin-bar & {
+			top: 32px;
+		}
+
+		&.hidden {
+			@include transform(translateY(-100%));
+		}
+
+		#inner-header {
+			margin: 15px auto;
+			text-align: center;
+
+			a {
+				line-height: 0;
+			}
+		}
+
+		#menu-open {
+			display: none;
+		}
+
+		.mobile-title {
+			display: none;
+		}
+
+		.logo {
+
+			img {
+				width: auto;
+			}
+		}
+
+		.light-logo {
+			display: block;
+		}
+
+		.header-tagline {
+			display: block;
+		    color: $dark-gray;
+		    font-weight: 400;
+		    font-size: 18px;
+		    line-height: 22px;
+		    letter-spacing: 0.2em;
+		    text-transform: uppercase;
+		}
+	}
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+.nav {
+	position: relative;
+	width: 100%;
+	top: 0;
+	max-width: none;
+	background-color: $gray;
+	@include transform(translateX(0));
+	font-size: 14px;
+	text-align: center;
+	overflow: visible;
+
+	.admin-bar & {
+		top: 0;
+	}
+
+	ul {
+		margin-top:0;
+		background-color: $gray;
+	}
+
+	& > li {
+		display: inline-block;
+		height: 60px;
+	}
+
+	li {
+		padding: 15px 10px;
+		line-height: 15px;
+
+		a {
+			border-bottom: 0;
+			color: $text-color;
+
+			/*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+			&:hover, &:focus {
+				color: $black;
+				background-color: $light-gray;
+			}
+		}
+
+		&:first-child {}
+		&:last-child {}
+
+		/*
+		plan your menus and drop-downs wisely.
+		*/
+		ul.sub-menu,
+		ul.children {
+			padding-left: 0;
+			margin-top: 0;
+			position: absolute;
+			display: none;
+			z-index: 8999;
+
+			li {
+
+				a {
+					padding-left: 10px;
+					display: block;
+					width: 180px;
+
+					&:hover,
+					&:focus {}
+
+					&:link {}
+				}
+
+				&:first-child {}
+
+				&:last-child {
+
+					a {
+						border-bottom: 0;
+					}
+				}
+
+				/*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+				ul {
+					top:0;
+					left:100%;
+				}
+			}
+
+			/* highlight sub-menu current page */
+			li.current-menu-item,
+			li.current_page_item,
+			li.current_page_ancestor {
+				a {}
+			}
+		}
+
+		/* showing sub-menus */
+		&:hover > ul {
+			top: auto;
+			display: block !important;
+		}
+
+	} /* end .menu ul li */
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+		a {}
+	}  /* end current highlighters */
+
+} /* end .nav */
