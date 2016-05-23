@@ -1,7 +1,15 @@
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('wrap cf'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article">
 
-                <section class="entry-content cf" itemprop="articleBody">
+                <div class="article-header entry-header image-header wrap">
+
+                  <h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
+
+                  <?php lib_bones_entry_meta(); ?>
+
+                </div> <!-- .entry-header -->
+
+                <section class="entry-content wrap cf" itemprop="articleBody">
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();

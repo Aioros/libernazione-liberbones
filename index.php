@@ -4,7 +4,7 @@
 
 				<div id="inner-content" class="wrap cf">
 
-						<main id="main" class="m-all t-all d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
+						<main id="main" class="m-all t-all d-5of7 cf" role="main">
 
 							<div id="posts-container">
 

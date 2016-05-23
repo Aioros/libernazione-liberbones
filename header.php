@@ -50,13 +50,13 @@
 
 	</head>
 
-	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+	<body <?php body_class(); ?>>
 
 		<?php print_adv("skin"); ?>
 
 		<div id="container">
 
-			<header id="header" class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<header id="header" class="header" role="banner">
 				<div id="site-header">
 					<div id="inner-header" class="wrap cf">
 

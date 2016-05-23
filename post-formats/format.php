@@ -14,9 +14,51 @@
                 */
               ?>
 
-              <article id="post-<?php the_ID(); ?>" <?php post_class('wrap cf'); ?> role="article" itemscope itemtype="http://schema.org/Article">
+              <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article">
 
-                <section class="entry-content cf" itemprop="articleBody">
+                <?php if (!has_post_thumbnail()) { ?>
+
+                  <div class="article-header entry-header image-header wrap">
+
+                    <h1 class="entry-title single-title" rel="bookmark"><?php the_title(); ?></h1>
+
+                    <?php lib_bones_entry_meta(); ?>
+
+                  </div> <!-- .entry-header -->
+
+                <?php } else { ?>
+
+                  <?php
+                  /*
+                   * Get cover image
+                   * It is done here, and this way, in order to get image URL (for schema)
+                   */
+                  // featured image is used
+                  $thumb       = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
+                  $thumb_image = get_the_post_thumbnail( $post->ID, 'full' );
+
+                  ?>
+                  <div id="single-header" class="cover-wrap">
+
+                    <div class="cover-media"><?php echo $thumb_image; ?></div>
+
+                    <div class="overlay single-overlay">
+
+                      <div class="article-header entry-header overlay-content wrap">
+
+                        <h1 class="entry-title single-title" rel="bookmark"><?php the_title(); ?></h1>
+
+                        <?php lib_bones_entry_meta(); ?>
+
+                      </div> <!-- .entry-header -->
+
+                    </div> <!-- .single-overlay -->
+
+                  </div> <!-- .cover-wrap -->
+
+                <?php } ?>
+
+                <section class="entry-content wrap cf">
 
                   <?php
                     if (function_exists("lib_social_buttons"))

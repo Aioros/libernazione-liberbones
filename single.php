@@ -5,53 +5,9 @@
 
 			<div id="content">
 
-				<?php if (!has_post_thumbnail() || get_post_format() == "image") { ?>
-
-					<div class="article-header entry-header image-header wrap">
-
-						<h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
-
-						<?php lib_bones_entry_meta(); ?>
-
-					</div> <!-- .entry-header -->
-
-				<?php } else { ?>
-
-					<?php
-					/*
-					 * Get cover image
-					 * It is done here, and this way, in order to get image URL (for schema)
-					 */
-					if( has_post_thumbnail() ){
-						// featured image is used
-						$thumb_image = get_the_post_thumbnail( $post->ID, 'full' );
-						$thumb       = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
-					}
-
-					?>
-					<div id="single-header" class="cover-wrap">
-
-						<div class="cover-media" itemprop="image" content="<?php echo esc_attr($thumb[0]); ?>"><?php echo $thumb_image; ?></div>
-
-						<div class="overlay single-overlay">
-
-							<div class="article-header entry-header overlay-content wrap">
-
-								<h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
-
-								<?php lib_bones_entry_meta(); ?>
-
-							</div> <!-- .entry-header -->
-
-						</div> <!-- .single-overlay -->
-
-					</div> <!-- .cover-wrap -->
-
-				<?php } ?>
-
 				<div id="inner-content" class="cf">
 
-					<main id="main" class="m-all <?php if ($has_sidebar) echo 't-2of3 d-5of7 '; ?>cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/WebPageElement">
+					<main id="main" class="m-all <?php if ($has_sidebar) echo 't-2of3 d-5of7 '; ?>cf" role="main">
 
 						<?php
 							/*

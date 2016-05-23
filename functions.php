@@ -15,7 +15,9 @@ require_once( 'library/bones.php' );
 require_once( 'library/admin.php' );
 
 include_once( 'amp/functions.php' );
-include_once( 'instant-articles/functions.php' );
+
+if (defined("IA_PLUGIN_VERSION"))
+  include_once( 'instant-articles/functions.php' );
 
 /*********************
 LAUNCH BONES
@@ -272,8 +274,8 @@ function lib_bones_entry_meta($categories = true) {
         else
           $coauthor_class = " co-author";
       }
-      $authors_string .= '<span class="entry-author author'.$coauthor_class.'" itemprop="author" itemscope itemtype="http://schema.org/Person">' .
-        '<a href="'.get_author_posts_url($author->ID).'">'.$author->display_name.'</a>' .
+      $authors_string .= '<span class="entry-author author'.$coauthor_class.'">' .
+        '<a href="'.get_author_posts_url($author->ID).'" itemprop="url">'.$author->display_name.'</a>' .
       '</span>';
       if ($key < count($authors) - 2)
         $authors_string .= ', ';
@@ -281,7 +283,7 @@ function lib_bones_entry_meta($categories = true) {
         $authors_string .= ' e ';
     }
     echo $authors_string;
-    echo '<span class="updated entry-time" itemprop="datePublished" content="'.get_the_time(get_option('date_format')).'">' .
+    echo '<span class="updated entry-time">' .
     '<a href="" title="" rel="bookmark">' . 
     '<time datetime="' . get_the_time('Y-m-d') . '">' .
       get_the_time(get_option('date_format')) .
