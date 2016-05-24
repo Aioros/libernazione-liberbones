@@ -204,7 +204,7 @@ function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
   <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
     <article  class="cf">
-      <header class="comment-author vcard">
+      <header class="comment-author">
         <?php
         /*
           this is the new responsive optimized comment image. It used the new HTML5 data-attribute to display comment gravatars on larger screens only. What this means is that on larger posts, mobile sites don't have a ton of requests for comment images. This makes load time incredibly fast! If you'd like to change it back, just replace it with the regular wordpress gravatar call:
@@ -252,7 +252,7 @@ add_action('wp_enqueue_scripts', 'bones_fonts');
 
 function lib_bones_entry_meta($categories = true) {
   ?>
-  <p class="byline entry-meta vcard">
+  <p class="byline entry-meta">
 
     <?php
     $authors = array();
@@ -274,7 +274,7 @@ function lib_bones_entry_meta($categories = true) {
         else
           $coauthor_class = " co-author";
       }
-      $authors_string .= '<span class="entry-author author'.$coauthor_class.' fn">' .
+      $authors_string .= '<span class="entry-author author'.$coauthor_class.'">' .
         '<a href="'.get_author_posts_url($author->ID).'">'.$author->display_name.'</a>' .
       '</span>';
       if ($key < count($authors) - 2)
