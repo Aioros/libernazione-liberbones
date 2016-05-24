@@ -57,7 +57,13 @@ style a page via class
 	.search-results {}              /* search result page */
 	.search-no-results {}           /* no results search page */
 	.search-paged-1 {}              /* individual paged search (i.e. body.search-paged-3) */
-.error404 {}                      /* 404 page */
+
+.error404 {                       /* 404 page */
+	.entry-content {
+		text-align: center;
+	}
+}
+
 .single {}                        /* single post page */
 	.postid-1 {}                    /* individual post page by id (i.e. body.postid-73) */
 	.single-paged-1 {}              /* individual paged single (i.e. body.single-paged-3) */
@@ -426,7 +432,7 @@ POSTS & CONTENT STYLES
 			}
 		}
 
-		.hentry {
+		.entry {
 
 			&.brick {
 				max-width: 500px;
@@ -463,7 +469,7 @@ POSTS & CONTENT STYLES
 				}
 			}
 
-		} /* end .hentry */
+		} /* end .entry */
 
 		.single-title,
 		.entry-title {
@@ -496,7 +502,7 @@ POSTS & CONTENT STYLES
 		.page {}            /* general article on a page style */
 		.attachment {}      /* general style on an attatchment */
 		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
+		.entry {}           /* entry class */
 		.category-slug {}   /* style by category (i.e. category-videos) */
 		.tag-slug {}        /* style by tag (i.e. tag-news) */
 

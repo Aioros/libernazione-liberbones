@@ -313,14 +313,14 @@ LAYOUT & GRID STYLES
 }
 
 /* line 30, ../scss/breakpoints/_768up.scss */
-.hentry.brick {
+.entry.brick {
   width: 48%;
   padding-left: 2%;
   padding-right: 2%;
   float: left;
 }
 /* line 36, ../scss/breakpoints/_768up.scss */
-.hentry.brick:hover .entry-overlay {
+.entry.brick:hover .entry-overlay {
   display: block;
   position: absolute;
   bottom: 0;
@@ -329,21 +329,21 @@ LAYOUT & GRID STYLES
   color: white;
 }
 /* line 44, ../scss/breakpoints/_768up.scss */
-.hentry.brick:hover .entry-overlay a {
+.entry.brick:hover .entry-overlay a {
   color: white;
   text-decoration: none;
 }
 /* line 49, ../scss/breakpoints/_768up.scss */
-.hentry.brick:hover .entry-overlay.entry-meta-category {
+.entry.brick:hover .entry-overlay.entry-meta-category {
   left: 0;
   text-transform: capitalize;
 }
 /* line 53, ../scss/breakpoints/_768up.scss */
-.hentry.brick:hover .entry-overlay.entry-meta-category a {
+.entry.brick:hover .entry-overlay.entry-meta-category a {
   padding-left: 4px;
 }
 /* line 58, ../scss/breakpoints/_768up.scss */
-.hentry.brick:hover .entry-overlay.comments-count {
+.entry.brick:hover .entry-overlay.comments-count {
   right: 0;
 }
 

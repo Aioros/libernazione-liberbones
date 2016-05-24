@@ -1,34 +1,44 @@
-<?php get_header(); ?>
+<?php
+
+get_header(); 
+
+$images = glob(WP_CONTENT_DIR . '/404/*.*');
+$image = array_rand($images);
+$image = $images[$image];
+$image = substr($image, strpos($image, "/wp-content"));
+
+?>
 
 			<div id="content">
 
 				<div id="inner-content" class="wrap cf">
 
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+					<main id="main" class="m-all t-all d-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-						<article id="post-not-found" class="hentry cf">
+						<article id="post-not-found" class="entry cf">
 
 							<header class="article-header">
 
-								<h1><?php _e( 'Epic 404 - Article Not Found', 'bonestheme' ); ?></h1>
+								<h1>Pagina non trovata</h1>
 
 							</header>
 
 							<section class="entry-content">
 
-								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'bonestheme' ); ?></p>
+								<img class="capezzone404" src="<?php echo $image; ?>" alt="<?php echo $ti_option['error_text']; ?>" />
+								<p>L'articolo che cercavi non è stato trovato.</p>
 
 							</section>
 
-							<section class="search">
+							<!--section class="search">
 
 									<p><?php get_search_form(); ?></p>
 
-							</section>
+							</section-->
 
 							<footer class="article-footer">
 
-									<p><?php _e( 'This is the 404.php template.', 'bonestheme' ); ?></p>
+									<!--p><?php _e( 'This is the 404.php template.', 'bonestheme' ); ?></p-->
 
 							</footer>
 

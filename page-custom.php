@@ -75,7 +75,7 @@
 
 							<?php endwhile; else : ?>
 
-									<article id="post-not-found" class="hentry cf">
+									<article id="post-not-found" class="entry cf">
 											<header class="article-header">
 												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 										</header>
