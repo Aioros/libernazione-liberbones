@@ -274,8 +274,8 @@ function lib_bones_entry_meta($categories = true) {
         else
           $coauthor_class = " co-author";
       }
-      $authors_string .= '<span class="entry-author author'.$coauthor_class.'">' .
-        '<a href="'.get_author_posts_url($author->ID).'" itemprop="url">'.$author->display_name.'</a>' .
+      $authors_string .= '<span class="entry-author author'.$coauthor_class.' fn">' .
+        '<a href="'.get_author_posts_url($author->ID).'">'.$author->display_name.'</a>' .
       '</span>';
       if ($key < count($authors) - 2)
         $authors_string .= ', ';
