@@ -18,6 +18,29 @@ function bz_amp_add_embeds( $embed_handler_classes, $post ) {
     return $embed_handler_classes;
 }*/
 
+// Escludiamo i post senza immagini
+add_filter("amp_skip_post", "lib_amp_skip_posts", 10, 3);
+function lib_amp_skip_posts($skip, $post_id, $post) {
+    if (!has_post_thumbnail($post_id)) {
+        $attached_image_ids = get_posts( array(
+            'post_parent' => $post_id,
+            'post_type' => 'attachment',
+            'post_mime_type' => 'image',
+            'posts_per_page' => 1,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'fields' => 'ids',
+            'suppress_filters' => false,
+        ) );
+
+        if ( empty( $attached_image_ids ) ) {
+            return true;
+        }
+    }
+
+    return $skip;
+}
+
 add_filter( 'amp_post_template_analytics', 'amp_add_custom_analytics' );
 function amp_add_custom_analytics( $analytics ) {
     if ( ! is_array( $analytics ) ) {
