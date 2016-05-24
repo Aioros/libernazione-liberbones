@@ -163,8 +163,13 @@ function bones_scripts_and_styles() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bones-js' );
 
-		wp_register_style('font_awesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
-  		wp_enqueue_style('font_awesome');
+		// Stili da non duplicare
+		global $wp_styles;
+		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
+		if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
+			wp_register_style('font_awesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	  		wp_enqueue_style('font_awesome');
+		}
 
 	}
 }

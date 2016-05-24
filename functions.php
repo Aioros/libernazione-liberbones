@@ -203,7 +203,7 @@ function bones_register_sidebars() {
 function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
   <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
-    <article  class="cf">
+    <article class="cf">
       <header class="comment-author">
         <?php
         /*
