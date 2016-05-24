@@ -173,7 +173,7 @@ jQuery(document).ready(function($) {
     }
 
     var mqSupport = Modernizr.mq('only all');
-    var bigDevice = Modernizr.mq('(min-width: 768px');
+    var bigDevice = Modernizr.mq('(min-width: 768px)');
     
     // Masonry layout in home
     // If we can't do the media query (curse you IE), just load it and be done with it.
