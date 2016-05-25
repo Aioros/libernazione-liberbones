@@ -309,4 +309,14 @@ function jetpackme_custom_photon_compression( $args ) {
     return $args;
 }
 
+add_filter("aioseop_keywords", "use_categories_in_home_keywords", 10, 1);
+function use_categories_in_home_keywords($keywords) {
+  if (is_home()) {
+    $categories = get_categories(array("fields" => "names"));
+    $categories = array_diff($categories, array("Uncategorized", "Senza categoria"));
+    return implode(",", $categories);
+  }
+  return $keywords;
+}
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>
