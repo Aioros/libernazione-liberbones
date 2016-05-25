@@ -34,6 +34,10 @@
                    * It is done here, and this way, in order to get image URL (for schema)
                    */
                   // featured image is used
+                  $A3_Lazy_Load = A3_Lazy_Load::_instance();
+                  add_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
+                  remove_filter( 'wp_get_attachment_image_attributes', array( $A3_Lazy_Load, 'get_attachment_image_attributes' ), 200 );
+                  
                   $thumb       = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
                   $thumb_image = get_the_post_thumbnail( $post->ID, 'full' );
 

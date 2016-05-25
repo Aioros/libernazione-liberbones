@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();?>
 
 			<div id="content">
 
@@ -8,7 +8,9 @@
 
 							<div id="posts-container">
 
-								<?php $counter = 0;
+								<?php
+								$counter = 0;
+								$img_counter = 0;
 
 								if (have_posts()) : while (have_posts()) : the_post();
 
@@ -28,7 +30,14 @@
 									<?php if( has_post_thumbnail() ) : ?>
 										<div class="brick-media">
 											<a href="<?php the_permalink(); ?>">
-												<?php the_post_thumbnail('thumb-medium'); ?>
+												<?php
+												$A3_Lazy_Load = A3_Lazy_Load::_instance();
+												if (!wp_is_mobile() && $img_counter < 4 || wp_is_mobile() && $img_counter < 1) {
+													add_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
+													remove_filter( 'wp_get_attachment_image_attributes', array( $A3_Lazy_Load, 'get_attachment_image_attributes' ), 200 );
+												}
+												$img_counter++;
+												the_post_thumbnail('thumb-medium'); ?>
 											</a>
 											<span class="entry-overlay entry-meta-category"><?php echo ucwords(get_the_category_list(",")); ?></span>
 											<?php

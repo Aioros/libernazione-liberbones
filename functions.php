@@ -309,6 +309,7 @@ function jetpackme_custom_photon_compression( $args ) {
     return $args;
 }
 
+/*** Categorie come keywords in home al posto dei tag ***/
 add_filter("aioseop_keywords", "use_categories_in_home_keywords", 10, 1);
 function use_categories_in_home_keywords($keywords) {
   if (is_home()) {
@@ -317,6 +318,13 @@ function use_categories_in_home_keywords($keywords) {
     return implode(",", $categories);
   }
   return $keywords;
+}
+
+/*** Per far andare le prime immagini senza lazyload ***/
+function add_nolazy_class($attr) {
+  remove_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
+  $attr['class'] .= ' no-lazy';
+  return $attr;
 }
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>
