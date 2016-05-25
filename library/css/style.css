@@ -1950,7 +1950,7 @@ POSTS & CONTENT STYLES
 }
 /* line 467, ../scss/breakpoints/_base.scss */
 .entry footer p {
-  margin: 0;
+  margin: 0 auto;
 }
 
 /* end .entry */
