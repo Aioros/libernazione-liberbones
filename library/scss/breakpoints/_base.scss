@@ -540,6 +540,7 @@ POSTS & CONTENT STYLES
 			    line-height: 1;
 			    overflow: hidden;
 			    text-align: center;
+			    height: 36px;
 
 			    & > div {
 				    display: inline-block;
@@ -561,6 +562,7 @@ POSTS & CONTENT STYLES
 				margin-right: auto;
 				margin-left: auto;
 				display: block;
+				width: auto;
 			}
 
 			p {

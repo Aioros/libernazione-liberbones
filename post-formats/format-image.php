@@ -11,9 +11,12 @@
 
                 <section class="entry-content wrap cf" itemprop="articleBody">
                   <?php
+                    if (function_exists("lib_social_buttons"))
+                      echo lib_social_buttons();
                     // the content (pretty self explanatory huh)
                     the_content();
-
+                    if (function_exists("lib_social_buttons"))
+                      echo lib_social_buttons($placeholder_only = true);
                   ?>
                 </section> <?php // end article section ?>
 

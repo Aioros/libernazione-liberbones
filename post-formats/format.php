@@ -91,7 +91,7 @@
                     ) );*/
 
                     if (function_exists("lib_social_buttons"))
-                      echo lib_social_buttons();
+                      echo lib_social_buttons($placeholder_only = true);
                   ?>
                 </section> <?php // end article section ?>
 
