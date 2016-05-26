@@ -66,7 +66,7 @@
 
                   <?php
                     if (function_exists("lib_social_buttons"))
-                      echo lib_social_buttons();
+                      echo lib_social_buttons("top");
 
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -91,7 +91,7 @@
                     ) );*/
 
                     if (function_exists("lib_social_buttons"))
-                      echo lib_social_buttons($placeholder_only = true);
+                      echo lib_social_buttons("bottom");
                   ?>
                 </section> <?php // end article section ?>
 

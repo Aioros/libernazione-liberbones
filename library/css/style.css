@@ -2011,7 +2011,8 @@ POSTS & CONTENT STYLES
 /* entry content */
 /* line 530, ../scss/breakpoints/_base.scss */
 .entry-content {
-  padding: 1.5em 1.5em 0;
+  position: relative;
+  padding: 4.5em 1.5em 4em;
   line-height: 190%;
   /*
   image alignment on a screen this size may be
@@ -2020,32 +2021,35 @@ POSTS & CONTENT STYLES
   but it's up to you. Feel free to change it up.
   */
 }
-/* line 534, ../scss/breakpoints/_base.scss */
+/* line 535, ../scss/breakpoints/_base.scss */
 .brick .entry-content {
   padding: 0;
 }
-/* line 538, ../scss/breakpoints/_base.scss */
+/* line 539, ../scss/breakpoints/_base.scss */
 .entry-content .social-buttons {
-  margin-bottom: 20px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   line-height: 1;
   overflow: hidden;
   text-align: center;
-  height: 36px;
+  height: 20px;
 }
-/* line 545, ../scss/breakpoints/_base.scss */
+/* line 549, ../scss/breakpoints/_base.scss */
 .entry-content .social-buttons > div {
   display: inline-block;
   position: relative;
   margin-right: 25px;
-  margin-bottom: 10px;
-}
-/* line 551, ../scss/breakpoints/_base.scss */
-.entry-content .social-buttons > div.gp-button {
-  top: 6px;
+  overflow: hidden;
 }
 /* line 555, ../scss/breakpoints/_base.scss */
-.entry-content .social-buttons > div.tw-button {
-  top: 2px;
+.entry-content .social-buttons > div:last-child {
+  margin-right: 0;
 }
 /* line 561, ../scss/breakpoints/_base.scss */
 .format-image .entry-content img {
