@@ -66,6 +66,15 @@ function instant_articles_add_custom_parts($instant_article) {
     return $instant_article;
 }
 
+add_filter('instant_articles_cover_kicker', 'lib_category_kicker', 10, 2);
+function lib_category_kicker($category, $post_id) {
+    if (strtolower($category) == "uncategorized" || strtolower($category) == "senza categoria") {
+        $category = "";
+    } else {
+        $category = ucwords($category);
+    }
+}
+
 // Fix per evitare wpautop su shortcode gallery (WP introduce <p> intorno a <figcaption>, forse risolto recentemente)
 add_filter("instant_articles_content", "undo_figcaption_autop", 10, 1);
 function undo_figcaption_autop($content) {
