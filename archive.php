@@ -12,7 +12,7 @@
 							<?php } elseif ( is_tag() ) { ?>
 							    <h1 class="page-title tag-title">Tag: <?php echo single_tag_title( '', false ); ?></h1>
 							<?php } elseif ( is_author() ) {
-							    echo lib_author_box();
+							    echo lib_author_box(get_query_var('author'));
 							}
 							?>
 
