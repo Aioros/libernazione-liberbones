@@ -73,6 +73,7 @@ function lib_category_kicker($category, $post_id) {
     } else {
         $category = ucwords($category);
     }
+    return $category;
 }
 
 // Fix per evitare wpautop su shortcode gallery (WP introduce <p> intorno a <figcaption>, forse risolto recentemente)
