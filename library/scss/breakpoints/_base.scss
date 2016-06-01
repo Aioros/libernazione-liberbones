@@ -382,8 +382,6 @@ POSTS & CONTENT STYLES
 				width: 100%;
 				height: auto;
 				display: block;
-				/*** FIX PER CROP CENTRATO DELLA COVER ***/
-				/*** Provare con Modernizr? ***/
 				max-height: 500px;
 				object-fit: cover;
 			}
@@ -545,6 +543,7 @@ POSTS & CONTENT STYLES
 			    overflow: hidden;
 			    text-align: center;
 			    height: 20px;
+			    width: 100%;
 
 			    & > div {
 				    display: inline-block;
