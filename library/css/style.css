@@ -1682,7 +1682,7 @@ ADV
 }
 /* line 181, ../scss/breakpoints/_base.scss */
 .adv iframe {
-  width: 100%;
+  max-width: 100%;
 }
 
 /*********************

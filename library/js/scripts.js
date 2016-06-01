@@ -163,7 +163,7 @@ jQuery(document).ready(function($) {
     if ( ! Modernizr.objectfit ) {
       $('.cover-media').each(function () {
         var $container = $(this);
-        var imgUrl = $container.attr('content');
+        var imgUrl = $container.find('img').prop('src');
         if (imgUrl) {
           $container
             .css('backgroundImage', 'url(' + imgUrl + ')')
