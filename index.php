@@ -31,10 +31,12 @@
 										<div class="brick-media">
 											<a href="<?php the_permalink(); ?>">
 												<?php
-												$A3_Lazy_Load = A3_Lazy_Load::_instance();
-												if (!wp_is_mobile() && $img_counter < 4 || wp_is_mobile() && $img_counter < 1) {
-													add_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
-													remove_filter( 'wp_get_attachment_image_attributes', array( $A3_Lazy_Load, 'get_attachment_image_attributes' ), 200 );
+												if (class_exists("A3_Lazy_Load")) {
+													$A3_Lazy_Load = A3_Lazy_Load::_instance();
+													if (!wp_is_mobile() && $img_counter < 4 || wp_is_mobile() && $img_counter < 1) {
+														add_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
+														remove_filter( 'wp_get_attachment_image_attributes', array( $A3_Lazy_Load, 'get_attachment_image_attributes' ), 200 );
+													}
 												}
 												$img_counter++;
 												the_post_thumbnail('thumb-medium'); ?>
