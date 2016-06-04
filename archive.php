@@ -25,7 +25,27 @@
 									<?php if( has_post_thumbnail() ) : ?>
 										<div class="brick-media">
 											<a href="<?php the_permalink(); ?>">
-												<?php the_post_thumbnail('thumb-medium'); ?>
+												<?php
+												if (class_exists("A3_Lazy_Load")) {
+													$A3_Lazy_Load = A3_Lazy_Load::_instance();
+													if (!wp_is_mobile() && $img_counter < 4 || wp_is_mobile() && $img_counter < 1) {
+														add_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
+														remove_filter( 'wp_get_attachment_image_attributes', array( $A3_Lazy_Load, 'get_attachment_image_attributes' ), 200 );
+													}
+												}
+												$img_counter++;
+
+												//the_post_thumbnail('thumb-medium');
+
+												$attachment_id = get_post_thumbnail_id();
+												list($img_src, $img_width, $img_height) = wp_get_attachment_image_src( $attachment_id, 'thumb-medium' );
+												$img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'thumb-medium' );
+												?>
+												<img src="<?php echo esc_url( $img_src ); ?>"
+												     srcset="<?php echo esc_attr( $img_srcset ); ?>"
+												     sizes="(max-width: 768px) 100vw, (max-width: 1030px) 50vw, 33vw"
+												     data-width="<?php echo $img_width; ?>" 
+												     data-height="<?php echo $img_height; ?>">
 											</a>
 										</div>
 									<?php endif; ?>
