@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/fonts/Open-Sans-300/Open-Sans-300.eot');
+  src: url('/fonts/Open-Sans-300/Open-Sans-300.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Light'),
+       local('Open-Sans-300'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.woff2') format('woff2'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.woff') format('woff'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.ttf') format('truetype'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/Open-Sans-regular/Open-Sans-regular.eot');
+  src: url('/fonts/Open-Sans-regular/Open-Sans-regular.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans'),
+       local('Open-Sans-regular'),
+       url('/fonts/Open-Sans-regular/Open-Sans-regular.woff2') format('woff2'),
+       url('/fonts/Open-Sans-regular/Open-Sans-regular.woff') format('woff'),
+       url('/fonts/Open-Sans-regular/Open-Sans-regular.ttf') format('truetype'),
+       url('/fonts/Open-Sans-regular/Open-Sans-regular.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/Open-Sans-600/Open-Sans-600.eot');
+  src: url('/fonts/Open-Sans-600/Open-Sans-600.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Semibold'),
+       local('Open-Sans-600'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.woff2') format('woff2'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.woff') format('woff'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.ttf') format('truetype'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-style: italic;
+  src: url('/fonts/Open-Sans-300italic/Open-Sans-300italic.eot');
+  src: url('/fonts/Open-Sans-300italic/Open-Sans-300italic.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Light Italic'),
+       local('Open-Sans-300italic'),
+       url('/fonts/Open-Sans-300italic/Open-Sans-300italic.woff2') format('woff2'),
+       url('/fonts/Open-Sans-300italic/Open-Sans-300italic.woff') format('woff'),
+       url('/fonts/Open-Sans-300italic/Open-Sans-300italic.ttf') format('truetype'),
+       url('/fonts/Open-Sans-300italic/Open-Sans-300italic.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-style: italic;
+  src: url('/fonts/Open-Sans-italic/Open-Sans-italic.eot');
+  src: url('/fonts/Open-Sans-italic/Open-Sans-italic.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Italic'),
+       local('Open-Sans-italic'),
+       url('/fonts/Open-Sans-italic/Open-Sans-italic.woff2') format('woff2'),
+       url('/fonts/Open-Sans-italic/Open-Sans-italic.woff') format('woff'),
+       url('/fonts/Open-Sans-italic/Open-Sans-italic.ttf') format('truetype'),
+       url('/fonts/Open-Sans-italic/Open-Sans-italic.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-style: italic;
+  src: url('/fonts/Open-Sans-600italic/Open-Sans-600italic.eot');
+  src: url('/fonts/Open-Sans-600italic/Open-Sans-600italic.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Semibold Italic'),
+       local('Open-Sans-600italic'),
+       url('/fonts/Open-Sans-600italic/Open-Sans-600italic.woff2') format('woff2'),
+       url('/fonts/Open-Sans-600italic/Open-Sans-600italic.woff') format('woff'),
+       url('/fonts/Open-Sans-600italic/Open-Sans-600italic.ttf') format('truetype'),
+       url('/fonts/Open-Sans-600italic/Open-Sans-600italic.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/fonts/Roboto-300/Roboto-300.eot');
+  src: url('/fonts/Roboto-300/Roboto-300.eot?#iefix') format('embedded-opentype'),
+       local('Roboto Light'),
+       local('Roboto-300'),
+       url('/fonts/Roboto-300/Roboto-300.woff2') format('woff2'),
+       url('/fonts/Roboto-300/Roboto-300.woff') format('woff'),
+       url('/fonts/Roboto-300/Roboto-300.ttf') format('truetype'),
+       url('/fonts/Roboto-300/Roboto-300.svg#Roboto') format('svg');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/Roboto-regular/Roboto-regular.eot');
+  src: url('/fonts/Roboto-regular/Roboto-regular.eot?#iefix') format('embedded-opentype'),
+       local('Roboto'),
+       local('Roboto-regular'),
+       url('/fonts/Roboto-regular/Roboto-regular.woff2') format('woff2'),
+       url('/fonts/Roboto-regular/Roboto-regular.woff') format('woff'),
+       url('/fonts/Roboto-regular/Roboto-regular.ttf') format('truetype'),
+       url('/fonts/Roboto-regular/Roboto-regular.svg#Roboto') format('svg');
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.eot');
+  src: url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.eot?#iefix') format('embedded-opentype'),
+       local('Libre Baskerville'),
+       local('Libre-Baskerville-regular'),
+       url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.woff2') format('woff2'),
+       url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.woff') format('woff'),
+       url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.ttf') format('truetype'),
+       url('/fonts/Libre-Baskerville-regular/Libre-Baskerville-regular.svg#LibreBaskerville') format('svg');
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.eot');
+  src: url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.eot?#iefix') format('embedded-opentype'),
+       local('Libre Baskerville Bold'),
+       local('Libre-Baskerville-700'),
+       url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.woff2') format('woff2'),
+       url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.woff') format('woff'),
+       url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.ttf') format('truetype'),
+       url('/fonts/Libre-Baskerville-700/Libre-Baskerville-700.svg#LibreBaskerville') format('svg');
+}
+
