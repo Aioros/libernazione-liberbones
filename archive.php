@@ -38,8 +38,8 @@
 												//the_post_thumbnail('thumb-medium');
 
 												$attachment_id = get_post_thumbnail_id();
-												list($img_src, $img_width, $img_height) = wp_get_attachment_image_src( $attachment_id, 'thumb-medium' );
-												$img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'thumb-medium' );
+												list($img_src, $img_width, $img_height) = wp_get_attachment_image_src( $attachment_id, array(600, 600) );
+												$img_srcset = wp_get_attachment_image_srcset( $attachment_id, array(600, 600) );
 												?>
 												<img src="<?php echo esc_url( $img_src ); ?>"
 												     srcset="<?php echo esc_attr( $img_srcset ); ?>"
