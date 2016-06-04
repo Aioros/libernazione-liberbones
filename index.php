@@ -15,12 +15,12 @@
 								if (have_posts()) : while (have_posts()) : the_post();
 
 								if ($counter == 4) { ?>
-									<article class="brick cf">
+									<article class="brick cf adv entry">
 										<?php print_adv("home-1"); ?>
 									</article>
 								<?php }
 								if ($counter == 12) { ?>
-									<article class="brick cf">
+									<article class="brick cf adv entry">
 										<?php print_adv("home-2"); ?>
 									</article>
 								<?php } ?>
@@ -39,7 +39,18 @@
 													}
 												}
 												$img_counter++;
-												the_post_thumbnail('thumb-medium'); ?>
+
+												//the_post_thumbnail('thumb-medium');
+
+												$attachment_id = get_post_thumbnail_id();
+												list($img_src, $img_width, $img_height) = wp_get_attachment_image_src( $attachment_id, 'thumb-medium' );
+												$img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'thumb-medium' );
+												?>
+												<img src="<?php echo esc_url( $img_src ); ?>"
+												     srcset="<?php echo esc_attr( $img_srcset ); ?>"
+												     sizes="(max-width: 768px) 100vw, (max-width: 1030px) 50vw, 33vw"
+												     data-width="<?php echo $img_width; ?>" 
+												     data-height="<?php echo $img_height; ?>">
 											</a>
 											<span class="entry-overlay entry-meta-category"><?php echo ucwords(get_the_category_list(",")); ?></span>
 											<?php

@@ -188,7 +188,7 @@ jQuery(document).ready(function($) {
           // Resize correctly lazyload placeholders to help stupid masonry out.
           $(".brick-media").each(function() {
             var img = $(this).find("img");
-            var ratio = parseInt(img.attr("height")) / parseInt(img.attr("width")) * 100;
+            var ratio = parseInt(img.attr("data-height")) / parseInt(img.attr("data-width")) * 100;
             $(this).css({
               "padding-bottom": ratio + "%",
               "position": "relative",

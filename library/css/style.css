@@ -1845,7 +1845,7 @@ POSTS & CONTENT STYLES
 
 /* line 365, ../scss/breakpoints/_base.scss */
 .brick-media img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
