@@ -28,6 +28,9 @@ need.
 *********************/
 
 function bones_head_cleanup() {
+	global $wp_styles;
+	global $wp_filter;
+
 	// category feeds
 	// remove_action( 'wp_head', 'feed_links_extra', 3 );
 	// post and comment feeds
@@ -55,6 +58,22 @@ function bones_head_cleanup() {
 	add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
 	// remove Wp version from scripts
 	add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+
+	// Stili da non duplicare
+	$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
+	if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
+		wp_register_style('font_awesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+  		wp_enqueue_style('font_awesome');
+	}
+
+	// Stili da non inserire
+	remove_action('wp_head', 'most_shared_posts_head');
+
+	// Action da rimuovere
+	if (is_home()) {
+		remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'need_epoch'), 9 );
+		remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'boot_epoch_front_comment') );
+	}
 
 } /* end bones head cleanup */
 
@@ -136,6 +155,8 @@ function bones_scripts_and_styles() {
 
 		// register main stylesheet
 		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+		// add inline critical styles
+		wp_add_inline_style ( 'bones-stylesheet', file_get_contents(get_stylesheet_directory_uri() . '/library/css/critical.css') );
 
 		// ie-only style sheet
 		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
@@ -162,16 +183,6 @@ function bones_scripts_and_styles() {
 		*/
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bones-js' );
-
-		// Stili da non duplicare
-		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
-		if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
-			wp_register_style('font_awesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
-	  		wp_enqueue_style('font_awesome');
-		}
-
-		// Stili da non inserire
-		remove_action('wp_head', 'most_shared_posts_head');
 
 	}
 }

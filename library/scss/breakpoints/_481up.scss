@@ -22,6 +22,9 @@ anymore, so just be aware that if you drop
 them in here, they won't work.
 */
 
+@include jacket(critical) {
+/**** START critical rules ****/
+
 .overlay {
 	top: auto;
 
@@ -35,6 +38,12 @@ them in here, they won't work.
 .article-header.wrap .entry-title {
 	font-size: 36px;
 }
+
+/**** END critical rules ****/
+}
+
+@include jacket(non-critical) {
+/**** START non-critical rules ****/
 
 /*********************
 NAVIGATION STYLES
@@ -142,3 +151,5 @@ do they need tweaking?
 	}
 } /* end .footer-links */
 
+/**** END non-critical rules ****/
+}

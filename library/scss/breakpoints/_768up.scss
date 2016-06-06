@@ -12,20 +12,16 @@ come into play. Have fun!
 
 ******************************************************************/
 
-
-/*********************
-GENERAL STYLES
-*********************/
-
-body {}
-
-/*********************
-LAYOUT & GRID STYLES
-*********************/
+@include jacket(critical) {
+/**** START critical rules ****/
 
 .single .wrap {
 	width: 80%;
 }
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
 
 .entry.brick {
 	width: 48%;
@@ -64,6 +60,18 @@ LAYOUT & GRID STYLES
 .micropost .entry-content {
 	font-size: 18px;
 }
+
+/**** END critical rules ****/
+}
+
+@include jacket(non-critical) {
+/**** START non-critical rules ****/
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {}
 
 /*********************
 HEADER STYLES
@@ -267,3 +275,5 @@ mobile. Make sure to double check these!
 	}
 } /* end .footer-links */
 
+/**** END non-critical rules ****/
+}

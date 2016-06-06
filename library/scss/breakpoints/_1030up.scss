@@ -9,8 +9,11 @@ be seen on the Desktop.
 
 ******************************************************************/
 
+@include jacket(critical) {
+/**** START critical rules ****/
+
 .single .wrap {
-  width: 66.667%;
+	width: 66.667%;
 }
 
 /*********************
@@ -208,3 +211,11 @@ NAVIGATION STYLES
 	}  /* end current highlighters */
 
 } /* end .nav */
+
+/**** END critical rules ****/
+}
+
+@include jacket(non-critical) {
+/**** START non-critical rules ****/
+/**** END non-critical rules ****/
+}

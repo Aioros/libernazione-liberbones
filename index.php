@@ -84,7 +84,7 @@
 								<?php $counter++; endwhile; ?>
 
 							</div>
-
+							<div style="clear: both;"></div>
 								<?php bones_page_navi(); ?>
 
 							<?php else : ?>

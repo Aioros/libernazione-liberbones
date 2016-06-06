@@ -1,3 +1,11 @@
+@include jacket(critical) {
+/**** START critical rules ****/
+/**** END critical rules ****/
+}
+
+@include jacket(non-critical) {
+/**** START non-critical rules ****/
+
 .admin-bar .header {
 	top: 45px;
 }
@@ -21,4 +29,7 @@
 	    	text-align: left;
 	    }
 	}
+}
+
+/**** END non-critical rules ****/
 }

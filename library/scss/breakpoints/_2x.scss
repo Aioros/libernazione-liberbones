@@ -40,3 +40,12 @@ the original dimensions and you are good to go.
 
 */
 
+@include jacket(critical) {
+/**** START critical rules ****/
+/**** END critical rules ****/
+}
+
+@include jacket(non-critical) {
+/**** START non-critical rules ****/
+/**** END non-critical rules ****/
+}
