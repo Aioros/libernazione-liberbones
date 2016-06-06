@@ -63,7 +63,7 @@
 						<span id="menu-open"><i class="fa fa-bars"></i></span>
 						<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 						<h2 class="mobile-title"><a href="<?php echo home_url(); ?>" title="LIBERNAZIONE" class="logo dark-logo" rel="nofollow">
-							<img src="http://libernazione.it/wp-content/uploads/2016/01/liblogowhite.png" />
+							<img src="http://libernazione.it/wp-content/themes/lib-bones/library/images/liblogowhite.png" />
 						</a></h2>
 						<a href="<?php echo home_url(); ?>" title="LIBERNAZIONE" class="logo light-logo" rel="nofollow">
 							<img src="http://libernazione.it/wp-content/uploads/2014/12/logolibern.png" />
