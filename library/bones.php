@@ -59,22 +59,6 @@ function bones_head_cleanup() {
 	// remove Wp version from scripts
 	add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
 
-	// Stili da non duplicare
-	$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
-	if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
-		wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/css/font-awesome.min.css');
-  		wp_enqueue_style('font_awesome');
-	}
-
-	// Stili da non inserire
-	remove_action('wp_head', 'most_shared_posts_head');
-
-	// Action da rimuovere
-	if (is_home()) {
-		remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'need_epoch'), 9 );
-		remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'boot_epoch_front_comment') );
-	}
-
 } /* end bones head cleanup */
 
 // A better title
@@ -183,6 +167,30 @@ function bones_scripts_and_styles() {
 		*/
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bones-js' );
+
+			// Stili da non duplicare
+		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
+		if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
+			wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/css/font-awesome.min.css');
+	  		wp_enqueue_style('font_awesome');
+		}
+
+		// Stili da non inserire
+		remove_action('wp_head', 'most_shared_posts_head');
+
+		// Action da rimuovere
+		//var_dump(is_home());exit;
+		if (is_home()) {
+			//var_dump("REMOVE EPOCH");
+			//remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'need_epoch'), 9 );
+			//remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'boot_epoch_front_comment') );
+
+			remove_action( 'wp_enqueue_scripts', array( postmatic\epoch\core::get_instance(), 'front_stylescripts' ) );
+			remove_filter( 'comments_template', array( '\postmatic\epoch\front\layout', 'initial' ), 100 );
+			remove_action( 'epoch_iframe_footer', array( postmatic\epoch\core::get_instance(), 'print_template' ), 9 );
+			remove_action( 'wp_footer', array( postmatic\epoch\core::get_instance(), 'print_template' ) );
+			remove_filter( 'the_content', array( '\postmatic\epoch\front\layout', 'width_sniffer' ), 100 );
+		}
 
 	}
 }
