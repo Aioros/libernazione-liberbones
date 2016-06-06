@@ -178,18 +178,10 @@ function bones_scripts_and_styles() {
 		// Stili da non inserire
 		remove_action('wp_head', 'most_shared_posts_head');
 
-		// Action da rimuovere
-		//var_dump(is_home());exit;
 		if (is_home()) {
-			//var_dump("REMOVE EPOCH");
-			//remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'need_epoch'), 9 );
-			//remove_action( 'template_redirect', array( postmatic\epoch\core::get_instance(), 'boot_epoch_front_comment') );
-
-			remove_action( 'wp_enqueue_scripts', array( postmatic\epoch\core::get_instance(), 'front_stylescripts' ) );
-			remove_filter( 'comments_template', array( '\postmatic\epoch\front\layout', 'initial' ), 100 );
-			remove_action( 'epoch_iframe_footer', array( postmatic\epoch\core::get_instance(), 'print_template' ), 9 );
-			remove_action( 'wp_footer', array( postmatic\epoch\core::get_instance(), 'print_template' ) );
-			remove_filter( 'the_content', array( '\postmatic\epoch\front\layout', 'width_sniffer' ), 100 );
+			wp_dequeue_script("epoch");
+			wp_dequeue_script("visibility");
+			wp_dequeue_script("epoch-handlebars");
 		}
 
 	}
