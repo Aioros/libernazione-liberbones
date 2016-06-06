@@ -62,7 +62,7 @@ function bones_head_cleanup() {
 	// Stili da non duplicare
 	$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
 	if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
-		wp_register_style('font_awesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+		wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/css/font-awesome.min.css');
   		wp_enqueue_style('font_awesome');
 	}
 
