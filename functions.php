@@ -250,6 +250,7 @@ function bones_fonts() {
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
 function lib_bones_entry_meta($categories = true) {
+  global $post;
   ?>
   <p class="byline entry-meta">
 
