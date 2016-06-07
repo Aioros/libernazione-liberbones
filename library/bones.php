@@ -61,6 +61,13 @@ function bones_head_cleanup() {
 
 } /* end bones head cleanup */
 
+function remove_jquery_migrate($scripts) {
+    if ( ! is_admin() && ! empty( $scripts->registered['jquery'] ) ) {
+		$jquery_dependencies = $scripts->registered['jquery']->deps;
+		$scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
+	}
+}
+
 // A better title
 // http://www.deluxeblogtips.com/2012/03/better-title-meta-tag.html
 function rw_title( $title, $sep, $seplocation ) {

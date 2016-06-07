@@ -63,6 +63,8 @@ function bones_ahoy() {
   //add_filter( 'excerpt_more', 'bones_excerpt_more' );
   add_filter( 'excerpt_length', 'bones_excerpt_length', 999 );
 
+  add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
+
 } /* end bones ahoy */
 
 // let's get this party started
