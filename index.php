@@ -49,6 +49,8 @@
 												<img src="<?php echo esc_url( $img_src ); ?>"
 												     srcset="<?php echo esc_attr( $img_srcset ); ?>"
 												     sizes="(max-width: 768px) 100vw, (max-width: 1030px) 50vw, 33vw"
+												     width="<?php echo $img_width; ?>" 
+												     height="<?php echo $img_height; ?>"
 												     data-width="<?php echo $img_width; ?>" 
 												     data-height="<?php echo $img_height; ?>">
 											</a>
