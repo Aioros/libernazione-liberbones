@@ -40,19 +40,14 @@
 												}
 												$img_counter++;
 
-												//the_post_thumbnail('thumb-medium');
-
-												$attachment_id = get_post_thumbnail_id();
-												list($img_src, $img_width, $img_height) = wp_get_attachment_image_src( $attachment_id, array(600, 600) );
-												$img_srcset = wp_get_attachment_image_srcset( $attachment_id, array(600, 600) );
+												ob_start();
+												the_post_thumbnail(array(600, 600));
+												$thumbnail = ob_get_clean();
+												$thumbnail = preg_replace('/width="\d+"/', '$0 data-$0', $thumbnail);
+												$thumbnail = preg_replace('/height="\d+"/', '$0 data-$0', $thumbnail);
+												echo $thumbnail;
 												?>
-												<img src="<?php echo esc_url( $img_src ); ?>"
-												     srcset="<?php echo esc_attr( $img_srcset ); ?>"
-												     sizes="(max-width: 768px) 100vw, (max-width: 1030px) 50vw, 33vw"
-												     width="<?php echo $img_width; ?>" 
-												     height="<?php echo $img_height; ?>"
-												     data-width="<?php echo $img_width; ?>" 
-												     data-height="<?php echo $img_height; ?>">
+
 											</a>
 											<span class="entry-overlay entry-meta-category"><?php echo ucwords(get_the_category_list(",")); ?></span>
 											<?php

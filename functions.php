@@ -322,6 +322,16 @@ function use_categories_in_home_keywords($keywords) {
   return $keywords;
 }
 
+/****** IMMAGINI IN HOME *******/
+
+// Attributo sizes
+add_filter("wp_calculate_image_sizes", "lib_image_sizes_attr");
+function lib_image_sizes_attr($sizes) {
+  if (is_home())
+    return "(max-width: 768px) 100vw, (max-width: 1030px) 50vw, 33vw";
+  return $sizes;
+}
+
 /*** Per far andare le prime immagini senza lazyload ***/
 function add_nolazy_class($attr) {
   remove_filter('wp_get_attachment_image_attributes', 'add_nolazy_class');
