@@ -190,6 +190,7 @@ function bones_scripts_and_styles() {
 			wp_dequeue_script("epoch");
 			wp_dequeue_script("visibility");
 			wp_dequeue_script("epoch-handlebars");
+			wp_dequeue_script("epoch-handlebars-helpers");
 		}
 
 	}
