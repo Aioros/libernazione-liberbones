@@ -173,7 +173,6 @@ function bones_scripts_and_styles() {
 		using the google cdn. That way it stays cached
 		and your site will load faster.
 		*/
-		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'bones-js' );
 
 			// Stili da non duplicare
