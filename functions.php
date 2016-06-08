@@ -80,8 +80,8 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'bones-thumb-600', 640, 480, true );
+add_image_size( 'bones-thumb-300', 320, 240, true );
 
 /*
 to add more sizes, simply copy a line from above
