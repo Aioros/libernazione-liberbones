@@ -19,6 +19,20 @@ URL: http://themble.com/bones/
 
 */
 
+function get_current_revision($file) {
+  $revisions_file = get_stylesheet_directory() . '/library/current_revision.json';
+  if (file_exists($revisions_file)) {
+    $cur_revs = json_decode(file_get_contents($revisions_file), true);
+    list($base_path, $rel_path) = explode("wp-content", $file);
+    $rel_path = 'wp-content' . $rel_path;
+    if (isset($cur_revs[$rel_path]))
+      $rel_path = $cur_revs[$rel_path];
+    return $base_path . $rel_path;
+  } else {
+    return $file;
+  }
+}
+
 /*********************
 WP_HEAD GOODNESS
 The default wordpress head is
@@ -138,20 +152,19 @@ SCRIPTS & ENQUEUEING
 function bones_scripts_and_styles() {
 
   global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
-  $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
+  
   if (!is_admin()) {
 
 		// modernizr (without media query polyfill)
-		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/3p/js/modernizr.custom.min.js', array(), '2.5.3', false );
 
 		// register main stylesheet
-		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+		wp_register_style( 'bones-stylesheet', get_current_revision(get_stylesheet_directory_uri() . '/library/css/style.css'), array(), '', 'all' );
 		// add inline critical styles
-		wp_add_inline_style ( 'bones-stylesheet', file_get_contents(get_stylesheet_directory_uri() . '/library/css/critical.css') );
+		wp_add_inline_style( 'bones-stylesheet', file_get_contents(get_current_revision(get_stylesheet_directory_uri() . '/library/css/critical.css')) );
 
 		// ie-only style sheet
-		wp_register_style( 'bones-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
+		wp_register_style( 'bones-ie-only', get_current_revision(get_stylesheet_directory_uri() . '/library/css/ie.css'), array(), '' );
 
 	    // comment reply script for threaded comments
 	    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
@@ -159,7 +172,7 @@ function bones_scripts_and_styles() {
 	    }
 
 		//adding scripts file in the footer
-		wp_register_script( 'bones-js', get_stylesheet_directory_uri() . '/library/js/scripts'.$suffix.'.js', array( 'jquery' ), '1.0', true );
+		wp_register_script( 'bones-js', get_current_revision(get_stylesheet_directory_uri() . '/library/js/scripts.min.js'), array( 'jquery' ), '1.0', true );
 
 		// enqueue styles and scripts
 		wp_enqueue_script( 'bones-modernizr' );
@@ -178,7 +191,7 @@ function bones_scripts_and_styles() {
 			// Stili da non duplicare
 		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
 		if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
-			wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/css/font-awesome.min.css');
+			wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/3p/css/font-awesome.min.css');
 	  		wp_enqueue_style('font_awesome');
 		}
 

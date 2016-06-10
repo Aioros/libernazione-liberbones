@@ -140,7 +140,7 @@ jQuery(document).ready(function($) {
   $(".nav .menu-item.tax > a").click(function(e) {
     e.preventDefault();
     $(this).parent().children("ul").toggle();
-  })
+  });
 
   /* Scroll to top link */
   $('#top-link').click(function(e){

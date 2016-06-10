@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAAA,OAAQ;EACP,GAAG,EAAE,IAAI",
-"sources": ["../../scss/breakpoints/600up.scss"],
-"names": [],
-"file": "600up.css"
-}
