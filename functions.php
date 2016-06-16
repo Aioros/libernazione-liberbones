@@ -217,10 +217,13 @@ function bones_comments( $comment, $args, $depth ) {
           // create variable
           $bgauthemail = get_comment_author_email();
         ?>
-        <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
+        <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=48&d=mm&r=g" class="load-gravatar avatar avatar-48 photo" height="48" width="48" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
-        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ) ?>
-        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
+        <?php printf(__( '<cite class="fn">%1$s</cite>', 'bonestheme' ), get_comment_author_link() ) ?>
+        <span class="comment-meta-divide">·</span>
+        <time datetime="<?php echo comment_time('Y-m-j'); ?>">
+          <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time('j F Y \a\l\l\e h:m'); ?></a>
+        </time>
 
       </header>
       <?php if ($comment->comment_approved == '0') : ?>
@@ -231,7 +234,8 @@ function bones_comments( $comment, $args, $depth ) {
       <section class="comment_content cf">
         <?php comment_text() ?>
       </section>
-      <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+      <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+      <?php edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ',''); ?>
     </article>
   <?php // </li> is added by WordPress automatically ?>
 <?php

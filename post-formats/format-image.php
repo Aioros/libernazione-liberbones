@@ -59,6 +59,6 @@
 
               <?php bones_related_posts($related_posts); ?>
 
-              <div class="comments">
+              <div class="comments wrap">
               <?php comments_template(); ?>
               </div>

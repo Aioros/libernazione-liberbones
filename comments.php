@@ -14,7 +14,7 @@ if ( post_password_required() ) {
 
   <?php if ( have_comments() ) : ?>
 
-    <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?></h3>
+    <h3 id="comments-title" class="h2"><?php comments_number( '<span>Nessun</span> commento', '<span>Un</span> commento', '<span>%</span> commenti' );?></h3>
 
     <section class="commentlist">
       <?php
@@ -24,7 +24,7 @@ if ( post_password_required() ) {
           'avatar_size'       => 40,
           'callback'          => 'bones_comments',
           'type'              => 'all',
-          'reply_text'        => __('Reply', 'bonestheme'),
+          'reply_text'        => 'Rispondi',
           'page'              => '',
           'per_page'          => '',
           'reverse_top_level' => null,
