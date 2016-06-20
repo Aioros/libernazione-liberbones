@@ -4,6 +4,7 @@
 	function buildComment(commentData) {
 		var comment = $("#comment_placeholder").clone().show();
 		comment.attr("id", "comment-" + commentData.id);
+		comment.data("parent", commentData.parent);
 		comment.find(".comment-author .avatar").attr("src", commentData.author_avatar_urls["48"]);
 		var authorLink = comment.find(".comment-author .fn");
 		if (commentData.author_url !== "")
@@ -35,26 +36,89 @@
 		return comment;
 	}
 
+	function insertComment(commentElement) {
+		var parentId = commentElement.data("parent");
+		if (parentId === 0) {
+			commentElement.data("depth", 1).addClass("depth-1").appendTo($(".commentlist"));
+		} else {
+			var parent = $("#comment-" + parentId);
+			commentElement.data("depth", parseInt(parent.data("depth")) + 1).addClass("depth-" + (parseInt(parent.data("depth")) + 1)).appendTo(parent);
+		}
+	}
+
+	// Aggiungiamo uno spinner accanto al tasto commenta
+	$("#submit").after($("<span>")
+		.addClass("status")
+		.append($("<img>").attr("src", "/wp-includes/images/spinner.gif").css({marginLeft: "20px", display: "none"}))
+	);
+
 	wp.api.loadPromise.done( function() {
 		
+		// Load comments async
 		var commentsCollection = new wp.api.collections.Comments();
 		var comments = commentsCollection.fetch({
-			data: {"post": libComments.post_id}
+			data: {"post": libComments.post_id/*, "status": "all"*/} // Dipende da cosa facciamo con la moderazione
 		}).done(function(comments) {
 			$(".commentlist .spinner").hide();
-			//console.log(comments);
+			console.log(comments);
 			
 			var comment;
 			var parent;
 			comments.forEach(function(commentData, i) {
 				comment = buildComment(commentData);
-				if (commentData.parent === 0) {
-					comment.data("depth", 1).addClass("depth-1").appendTo($(".commentlist"));
-				} else {
-					var parent = $("#comment-" + commentData.parent);
-					comment.data("depth", parent.data("depth") + 1).addClass("depth-" + parent.data("depth") + 1).appendTo(parent);
-				}
+				insertComment(comment);
 			});
+
+			if (window.location.hash) {
+				$(window.location.hash).get(0).scrollIntoView();
+			}
+		});
+
+		// Hijack comment form for async post
+		var commentForm = $("#commentform");
+		commentForm.submit(function() {
+			var formData = commentForm.serializeArray().reduce(function(obj, item) {
+			    obj[item.name] = item.value;
+			    return obj;
+			}, {});
+			//console.log(formData);
+
+			$("#comment").prop("disabled", true);
+			$("#submit").prop("disabled", true);
+			$("#commentform .status img").show();
+
+			var comment = new wp.api.models.Comment({
+				content: formData.comment,
+				author_name: formData.author,
+				author_email: formData.email,
+				author_url: formData.url,
+				post: formData.comment_post_ID,
+				parent: formData.comment_parent
+			});
+			comment.save()
+				.done(function(response) {
+					console.log("Success", response);
+					if (response.status == "approved") {
+						$("#cancel-comment-reply-link").click();
+						$("#comment").val("");
+						insertComment(buildComment(response));
+					} else {
+						$("#commentform .status").append($("<span>").text("Il commento è in moderazione"));
+						// Non mi piace granché; potrei farlo apparire ma semitrasparente solo per l'utente?
+						// Nel caso controllare se viene recuperato all'inizio
+					}
+				})
+				.fail(function(response) {
+					console.log("Failed", response);
+					$("#commentform .status").append($("<span>").text("Non è stato possibile inviare il commento"));
+				})
+				.always(function() {
+					$("#comment").prop("disabled", false);
+					$("#submit").prop("disabled", false);
+					$("#commentform .status img").hide();
+				});
+			
+			return false;
 		});
 
 	} );
