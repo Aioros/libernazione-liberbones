@@ -151,9 +151,9 @@ SCRIPTS & ENQUEUEING
 // loading modernizr and jquery, and reply script
 function bones_scripts_and_styles() {
 
-  global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
-  
-  if (!is_admin()) {
+	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+
+	if (!is_admin()) {
 
 		// modernizr (without media query polyfill)
 		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/3p/js/modernizr.custom.min.js', array(), '2.5.3', false );
@@ -166,10 +166,10 @@ function bones_scripts_and_styles() {
 		// ie-only style sheet
 		wp_register_style( 'bones-ie-only', get_current_revision(get_stylesheet_directory_uri() . '/library/css/ie.css'), array(), '' );
 
-	    // comment reply script for threaded comments
-	    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-			  wp_enqueue_script( 'comment-reply' );
-	    }
+		// comment reply script for threaded comments
+		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 
 		//adding scripts file in the footer
 		wp_register_script( 'bones-js', get_current_revision(get_stylesheet_directory_uri() . '/library/js/scripts.min.js'), array( 'jquery' ), '1.0', true );
@@ -187,12 +187,17 @@ function bones_scripts_and_styles() {
 		and your site will load faster.
 		*/
 		wp_enqueue_script( 'bones-js' );
+		
+		if (is_single()) {
+			wp_enqueue_script("lib-comments", get_current_revision(get_stylesheet_directory_uri() . '/library/js/comments.min.js'), array("jquery", "wp-api"), "1.0", true);
+	        wp_localize_script( 'lib-comments', 'libComments', array( 'ec' => current_user_can('moderate_comments'), 'post_id' => get_the_ID() ) );
+		}
 
 			// Stili da non duplicare
 		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
 		if (!in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
 			wp_register_style('font_awesome', get_stylesheet_directory_uri() . '/library/3p/css/font-awesome.min.css');
-	  		wp_enqueue_style('font_awesome');
+				wp_enqueue_style('font_awesome');
 		}
 
 		// Stili da non inserire

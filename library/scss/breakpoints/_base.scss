@@ -1158,6 +1158,10 @@ COMMENT STYLES
 			height: 42px;
 		}
 
+		& .comment_content {
+			margin-left: 55px;
+		}
+
 		& .comment-reply-link {
 			margin-left: 55px;
 		}
@@ -1206,6 +1210,7 @@ COMMENT STYLES
 
 	/* comment content */
 	.comment_content {
+		margin-left: 60px;
 
 		p {}
 

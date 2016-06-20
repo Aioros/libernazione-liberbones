@@ -17,8 +17,17 @@ if ( post_password_required() ) {
     <h3 id="comments-title" class="h2"><?php comments_number( '<span>Nessun</span> commento', '<span>Un</span> commento', '<span>%</span> commenti' );?></h3>
 
     <section class="commentlist">
+
+      <div class="spinner" style="width: 100%; text-align: center; margin-top: 30px;">
+        <img src="/wp-includes/images/spinner-2x.gif">
+      </div>
+
+      <div id="comment_placeholder" class="comment odd thread-odd cf" style="display: none;">
+        <?php echo comment_placeholder(); ?>
+      </div>
+
       <?php
-        wp_list_comments( array(
+        /*wp_list_comments( array(
           'style'             => 'div',
           'short_ping'        => true,
           'avatar_size'       => 40,
@@ -29,7 +38,7 @@ if ( post_password_required() ) {
           'per_page'          => '',
           'reverse_top_level' => null,
           'reverse_children'  => ''
-        ) );
+        ) );*/
       ?>
     </section>
 
