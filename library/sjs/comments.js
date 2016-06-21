@@ -46,6 +46,24 @@
 		}
 	}
 
+	function pollComments(commentsCollection) {
+		var comments = commentsCollection.fetch({ data: {
+			post: libComments.post_id,
+			after: libComments.lastUpdate
+		}}).done(function(comments) {
+			console.log(comments);
+			comments.forEach(function(commentData, i) {
+				if ($("#comment-" + commentData.id).length === 0) {
+					comment = buildComment(commentData);
+					insertComment(comment);
+				}
+			});
+		}).always(function() {
+			libComments.lastUpdate = (new Date()).toISOString();
+			setTimeout(function() { pollComments(commentsCollection); }, 15000);
+		});
+	}
+
 	// Aggiungiamo uno spinner accanto al tasto commenta
 	$("#submit").after($("<span>")
 		.addClass("status")
@@ -57,10 +75,10 @@
 		// Load comments async
 		var commentsCollection = new wp.api.collections.Comments();
 		var comments = commentsCollection.fetch({
-			data: {"post": libComments.post_id/*, "status": "all"*/} // Dipende da cosa facciamo con la moderazione
+			data: {post: libComments.post_id/*, status: "all"*/} // Dipende da cosa facciamo con la moderazione
 		}).done(function(comments) {
 			$(".commentlist .spinner").hide();
-			console.log(comments);
+			//console.log(comments);
 			
 			var comment;
 			var parent;
@@ -72,6 +90,10 @@
 			if (window.location.hash) {
 				$(window.location.hash).get(0).scrollIntoView();
 			}
+
+			// Start comment polling
+			libComments.lastUpdate = (new Date()).toISOString();
+			setTimeout(function() { pollComments(commentsCollection); }, 15000);
 		});
 
 		// Hijack comment form for async post
@@ -97,19 +119,18 @@
 			});
 			comment.save()
 				.done(function(response) {
-					console.log("Success", response);
-					if (response.status == "approved") {
-						$("#cancel-comment-reply-link").click();
-						$("#comment").val("");
-						insertComment(buildComment(response));
-					} else {
-						$("#commentform .status").append($("<span>").text("Il commento è in moderazione"));
-						// Non mi piace granché; potrei farlo apparire ma semitrasparente solo per l'utente?
-						// Nel caso controllare se viene recuperato all'inizio
+					//console.log("Success", response);
+					var comment = buildComment(response);
+					if (response.status != "approved") {
+						comment.addClass("hold");
+						comment.find(".fn").after($("<span>").text(" (Commento in moderazione)"));
 					}
+					$("#cancel-comment-reply-link").click();
+					$("#comment").val("");
+					insertComment(comment);
 				})
 				.fail(function(response) {
-					console.log("Failed", response);
+					//console.log("Failed", response);
 					$("#commentform .status").append($("<span>").text("Non è stato possibile inviare il commento"));
 				})
 				.always(function() {

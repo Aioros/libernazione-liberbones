@@ -437,7 +437,7 @@ and more scalable.
 
 		.social-button {
 			height: 20px;
-			background-image: url('/wp-content/plugins/libernazione-utils/img/social-placeholder.png');
+			background-image: url('/wp-content/plugins/libernazione-utils/img/social-placeholder.gif');
 			background-repeat: no-repeat;
 		}
 
@@ -1080,6 +1080,10 @@ COMMENT STYLES
 	padding: 1.5em;
 	border-bottom: 1px solid $light-gray;
 	font-size: 15px;
+
+	&.hold {
+		opacity: 0.5;
+	}
 
 	.comment-author {
 		border: 0;
