@@ -348,12 +348,28 @@ function add_nolazy_class($attr) {
   return $attr;
 }
 
+/*** REST API & COMMENTS ***/
+
 // Per usare la data GMT nelle date query dei commenti via REST API
 add_filter("rest_comment_query", "lib_gmt_rest_date_query", 10, 1);
 function lib_gmt_rest_date_query($args) {
   if (isset($args["date_query"][0]["after"]) || isset($args["date_query"][0]["before"]))
     $args["date_query"][0]["column"] = "comment_date_gmt";
   return $args;
+}
+
+// Aggiunta campo paragrafo all'endpoint dei commenti
+add_action("rest_api_init", "lib_rest_custom_fields");
+function lib_rest_custom_fields() {
+  register_rest_field("comment", "paragraph", array(
+    'get_callback' => 'lib_get_comment_paragraph',
+    'update_callback' => 'lib_set_comment_paragraph',
+    'schema' => null
+  ));
+}
+
+function lib_get_comment_paragraph($object, $field_name, $request) {
+  return get_comment_meta($object['id'], $field_name, true);
 }
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

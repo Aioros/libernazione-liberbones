@@ -51,7 +51,7 @@
 			post: libComments.post_id,
 			after: libComments.lastUpdate
 		}}).done(function(comments) {
-			console.log(comments);
+			//console.log(comments);
 			comments.forEach(function(commentData, i) {
 				if ($("#comment-" + commentData.id).length === 0) {
 					comment = buildComment(commentData);
@@ -62,6 +62,13 @@
 			libComments.lastUpdate = (new Date()).toISOString();
 			setTimeout(function() { pollComments(commentsCollection); }, 15000);
 		});
+	}
+
+	function addParagraphComments(paragraph) {
+		var comments = $("<span>")
+							.addClass("comments")
+							.text(paragraph.data("comments") ? paragraph.data("comments") : "+");
+		paragraph.append(comments);
 	}
 
 	// Aggiungiamo uno spinner accanto al tasto commenta
@@ -79,15 +86,34 @@
 		}).done(function(comments) {
 			$(".commentlist .spinner").hide();
 			//console.log(comments);
+
+			var paragraphs = $(".entry-content p").data("comments", 0);
 			
 			var comment;
 			var parent;
+
 			comments.forEach(function(commentData, i) {
+				if (commentData.paragraph !== "") {
+					var paragraph = paragraphs.eq(commentData.paragraph);
+					paragraph.data("comments", paragraph.data("comments") + 1);
+				}
 				comment = buildComment(commentData);
 				insertComment(comment);
 			});
 
-			if (window.location.hash) {
+			paragraphs.each(function(i) {
+				addParagraphComments($(this));
+				$(this).hover(function() {
+					clearTimeout(libComments.inlineTimeout);
+					paragraphs.find(".comments").hide();
+					$(this).find(".comments").show();
+				}, function() {
+					var self = this;
+					libComments.inlineTimeout = setTimeout(function() { $(self).find(".comments").hide(); }, 1000);
+				});
+			});
+
+			if (window.location.hash && window.location.hash.match(/#comment-\d+/)) {
 				$(window.location.hash).get(0).scrollIntoView();
 			}
 
@@ -141,6 +167,6 @@
 			
 			return false;
 		});
-
+	
 	} );
 })();
