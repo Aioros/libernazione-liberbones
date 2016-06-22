@@ -31,5 +31,40 @@
 	}
 }
 
+.comment {
+
+	.avatar {
+		width: auto;
+		height: auto;
+	}
+
+	.comment_content {
+		margin-left: 60px;
+	}
+
+	.comment-reply-link {
+		margin-left: 60px;
+	}
+
+	&:not(.depth-1) {
+		margin-top: 0;
+		margin-left: 30px;
+
+		& .avatar {
+			width: 42px;
+			height: 42px;
+		}
+
+		& .comment_content {
+			margin-left: 55px;
+		}
+
+		& .comment-reply-link {
+			margin-left: 55px;
+		}
+	}
+
+}
+
 /**** END non-critical rules ****/
 }

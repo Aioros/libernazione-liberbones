@@ -1120,6 +1120,8 @@ COMMENT STYLES
 		float: left;
 		border-radius: 4px;
 		margin-right: 12px;
+		width: 24px;
+		height: 24px;
 	}
 
 	&:last-child {
@@ -1153,23 +1155,7 @@ COMMENT STYLES
 		margin-top: 0;
 	}
 
-	&:not(.depth-1) {
-		margin-top: 0;
-		margin-left: 30px;
-
-		& .avatar {
-			width: 42px;
-			height: 42px;
-		}
-
-		& .comment_content {
-			margin-left: 55px;
-		}
-
-		& .comment-reply-link {
-			margin-left: 55px;
-		}
-	}
+	&:not(.depth-1) {}
 
 	&.depth-2 {}
 	&.depth-3 {}
@@ -1214,7 +1200,7 @@ COMMENT STYLES
 
 	/* comment content */
 	.comment_content {
-		margin-left: 60px;
+		margin-left: 36px;
 
 		p {}
 
@@ -1222,7 +1208,7 @@ COMMENT STYLES
 
 	/* comment reply link */
 	.comment-reply-link {
-		margin-left: 60px;
+		margin-left: 36px;
 		color: $medium-gray;
 		text-decoration: none;
 		font-size: 12px;

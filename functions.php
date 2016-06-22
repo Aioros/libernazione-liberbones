@@ -348,4 +348,12 @@ function add_nolazy_class($attr) {
   return $attr;
 }
 
+// Per usare la data GMT nelle date query dei commenti via REST API
+add_filter("rest_comment_query", "lib_gmt_rest_date_query", 10, 1);
+function lib_gmt_rest_date_query($args) {
+  if (isset($args["date_query"][0]["after"]) || isset($args["date_query"][0]["before"]))
+    $args["date_query"][0]["column"] = "comment_date_gmt";
+  return $args;
+}
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>
