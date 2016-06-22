@@ -99,6 +99,7 @@
 				}
 				comment = buildComment(commentData);
 				insertComment(comment);
+				comment.get().scrollIntoView();
 			});
 
 			paragraphs.each(function(i) {
