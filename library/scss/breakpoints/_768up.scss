@@ -275,29 +275,5 @@ mobile. Make sure to double check these!
 	}
 } /* end .footer-links */
 
-/**** INLINE COMMENTS ****/
-.entry-content p {
-	position: relative;
-
-	.comments {
-		display: none;
-	    position: absolute;
-	    top: 0;
-	    right: -40px;
-	    width: 26px;
-	    color: white;
-	    cursor: pointer;
-	    background-image: url("/wp-content/themes/lib-bones/library/images/comment.png");
-	    background-size: 100%;
-	    background-repeat: no-repeat;
-	    background-position-y: 4px;
-	    opacity: 0.5;
-	    font-size: 11px;
-	    line-height: 28px;
-    	text-align: center;
-	}
-
-}
-
 /**** END non-critical rules ****/
 }

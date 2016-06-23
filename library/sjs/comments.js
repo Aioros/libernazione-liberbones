@@ -5,6 +5,7 @@
 		var comment = $("#comment_placeholder").clone().show();
 		comment.attr("id", "comment-" + commentData.id);
 		comment.data("parent", commentData.parent);
+		comment.data("paragraph", commentData.paragraph);
 		comment.find(".comment-author .avatar").attr("src", commentData.author_avatar_urls["48"]);
 		var authorLink = comment.find(".comment-author .fn");
 		if (commentData.author_url !== "")
@@ -69,7 +70,13 @@
 							.addClass("comments")
 							.text(paragraph.data("comments") ? paragraph.data("comments") : "+");
 		comments.click(function() {
-			$(".entry-content").css("right", "100px");
+			$(".entry-content").css("right", "150px");
+			var inlineComment = $(".commentlist .comment").filter(function() {
+				return $(this).data("paragraph") == $(".entry-content p").index(paragraph) && $(this).data("depth") === 1;
+			}).clone().addClass("inline-comment");
+			$(".entry-content").addClass("comments-active").append(inlineComment);
+			inlineComment.offset({top: paragraph.offset().top});
+			$(".entry-content .comments").hide();
 		});
 		paragraph.append(comments);
 	}
@@ -102,22 +109,25 @@
 				}
 				comment = buildComment(commentData);
 				insertComment(comment);
-				comment.get().scrollIntoView();
 			});
 
 			paragraphs.each(function(i) {
 				addParagraphComments($(this));
 				$(this).hover(function() {
-					clearTimeout(libComments.inlineTimeout);
-					paragraphs.find(".comments").hide();
-					$(this).find(".comments").show();
+					if (!$(".entry-content").hasClass("comments-active")) {
+						clearTimeout(libComments.inlineTimeout);
+						paragraphs.find(".comments").hide();
+						$(this).find(".comments").show();
+					}
 				}, function() {
-					var self = this;
-					libComments.inlineTimeout = setTimeout(function() { $(self).find(".comments").hide(); }, 1000);
+					if (!$(".entry-content").hasClass("comments-active")) {
+						var self = this;
+						libComments.inlineTimeout = setTimeout(function() { $(self).find(".comments").hide(); }, 1000);
+					}
 				});
 			});
 
-			if (window.location.hash && window.location.hash.match(/#comment-\d+/)) {
+			if (window.location.hash && window.location.hash.match(/^#comment-\d+$/)) {
 				$(window.location.hash).get(0).scrollIntoView();
 			}
 
@@ -158,6 +168,7 @@
 					$("#cancel-comment-reply-link").click();
 					$("#comment").val("");
 					insertComment(comment);
+					comment.get(0).scrollIntoView();
 				})
 				.fail(function(response) {
 					//console.log("Failed", response);
