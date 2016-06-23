@@ -68,6 +68,9 @@
 		var comments = $("<span>")
 							.addClass("comments")
 							.text(paragraph.data("comments") ? paragraph.data("comments") : "+");
+		comments.click(function() {
+			$(".entry-content").css("right", "100px");
+		});
 		paragraph.append(comments);
 	}
 
