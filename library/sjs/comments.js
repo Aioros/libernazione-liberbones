@@ -87,7 +87,7 @@
 				insertComment(comment);
 			});
 
-			if (window.location.hash) {
+			if (window.location.hash && window.location.hash.match(/^#comment-\d+$/)) {
 				$(window.location.hash).get(0).scrollIntoView();
 			}
 
@@ -128,6 +128,7 @@
 					$("#cancel-comment-reply-link").click();
 					$("#comment").val("");
 					insertComment(comment);
+					comment.get(0).scrollIntoView();
 				})
 				.fail(function(response) {
 					//console.log("Failed", response);
