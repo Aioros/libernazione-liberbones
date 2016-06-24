@@ -71,9 +71,11 @@
 							.text(paragraph.data("comments") ? paragraph.data("comments") : "+");
 		comments.click(function() {
 			$(".entry-content").css("right", "150px");
-			var inlineComment = $(".commentlist .comment").filter(function() {
-				return $(this).data("paragraph") == $(".entry-content p").index(paragraph) && $(this).data("depth") === 1;
-			}).clone().addClass("inline-comment");
+			var inlineComment = $("<div>").append(
+				$(".commentlist .comment").filter(function() {
+					return $(this).data("paragraph") == $(".entry-content p").index(paragraph) && $(this).data("depth") === 1;
+				}).clone()
+			).addClass("inline-comment");
 			$(".entry-content").addClass("comments-active").append(inlineComment);
 			inlineComment.offset({top: paragraph.offset().top});
 			$(".entry-content .comments").hide();

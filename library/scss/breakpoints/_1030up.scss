@@ -248,7 +248,30 @@ NAVIGATION STYLES
 	    position: absolute;
 	    right: -33.3%;
 	    width: 33.3%;
-	    padding: 0;
+
+	    .comment {
+		    padding: 0;
+		    font-size: 12px !important;
+
+		    .comment-author {
+		    	padding: 0;
+
+		    	.depth
+
+		    	.avatar {
+		    		width: 24px;
+		    		height: 24px;
+		    	}
+		    }
+
+		    .comment_content, .comment-reply-link {
+		    	margin-left: 36px;
+
+		    	p {
+		    		margin: 5px 0;
+		    	}
+		    }
+		}
 	}
 
 }
