@@ -70,6 +70,8 @@
                     if (function_exists("lib_social_buttons"))
                       echo lib_social_buttons("top");
 
+                    print_adv("intext");
+
                     // the content (pretty self explanatory huh)
                     the_content();
 
