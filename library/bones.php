@@ -168,7 +168,8 @@ function bones_scripts_and_styles() {
 
 		// comment reply script for threaded comments
 		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
-			wp_enqueue_script( 'comment-reply' );
+			//wp_enqueue_script( 'comment-reply' );
+			wp_enqueue_script( 'lib-comment-reply', get_current_revision(get_stylesheet_directory_uri() . '/library/js/lib-comment-reply.min.js'), array(), '1.0', true );
 		}
 
 		//adding scripts file in the footer
