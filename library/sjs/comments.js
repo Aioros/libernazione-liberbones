@@ -75,7 +75,7 @@
 		// Load comments async
 		var commentsCollection = new wp.api.collections.Comments();
 		var comments = commentsCollection.fetch({
-			data: {post: libComments.post_id/*, status: "all"*/} // Dipende da cosa facciamo con la moderazione
+			data: {post: libComments.post_id, per_page: 100/*, status: "all"*/} // Dipende da cosa facciamo con la moderazione
 		}).done(function(comments) {
 			$(".commentlist .spinner").hide();
 			//console.log(comments);
